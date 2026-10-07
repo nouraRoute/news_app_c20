@@ -3,10 +3,19 @@ import 'package:news_app/common/app_text_styles.dart';
 import 'package:news_app/common/theme/app_colors.dart';
 
 class AppTheme {
-  ThemeData lightTheme = ThemeData(
+  static ThemeData lightTheme = ThemeData(
+    dividerColor: AppColors.primaryWhiteColor,
+    dividerTheme: DividerThemeData(color: AppColors.primaryWhiteColor),
+
     scaffoldBackgroundColor: AppColors.primaryWhiteColor,
-    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryWhiteColor),
+    colorScheme: ColorScheme.fromSeed(
+      primary: AppColors.primaryWhiteColor,
+      seedColor: AppColors.primaryWhiteColor,
+      secondary: AppColors.primaryBlackColor,
+    ),
     appBarTheme: AppBarTheme(
+      centerTitle: true,
+      titleTextStyle: AppTextStyles.styleS20W500Black,
       backgroundColor: AppColors.primaryWhiteColor,
       foregroundColor: AppColors.primaryBlackColor,
     ),
@@ -32,10 +41,19 @@ class AppTheme {
       labelSmall: AppTextStyles.styleS14W400Black,
     ),
   );
-  ThemeData darkTheme = ThemeData(
+  static ThemeData darkTheme = ThemeData(
+    dividerColor: AppColors.primaryWhiteColor,
+    dividerTheme: DividerThemeData(color: AppColors.primaryWhiteColor),
     scaffoldBackgroundColor: AppColors.primaryBlackColor,
-    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryBlackColor),
+    colorScheme: ColorScheme.fromSeed(
+      primary: AppColors.primaryBlackColor,
+      seedColor: AppColors.primaryBlackColor,
+      secondary: AppColors.primaryWhiteColor,
+    ),
     appBarTheme: AppBarTheme(
+      titleTextStyle: AppTextStyles.styleS20W500White,
+      centerTitle: true,
+
       backgroundColor: AppColors.primaryBlackColor,
       foregroundColor: AppColors.primaryWhiteColor,
     ),
