@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/common/app_text_styles.dart';
 import 'package:news_app/common/theme/app_colors.dart';
 import 'package:news_app/common/widgets/custom_drop_down_menu_widget.dart';
+import 'package:news_app/screens/provider/main_screen_provider.dart';
+import 'package:provider/provider.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -29,6 +31,10 @@ class DrawerWidget extends StatelessWidget {
           ListTile(
             title: Text("Go To Home", style: AppTextStyles.styleS20W700White),
             leading: Icon(Icons.home_outlined, color: AppColors.primaryWhiteColor),
+            onTap: () {
+              Provider.of<MainScreenProvider>(context, listen: false).changeCategory(null);
+              Navigator.of(context).pop();
+            },
           ),
           Divider(endIndent: 16.w, indent: 16.w),
           ListTile(

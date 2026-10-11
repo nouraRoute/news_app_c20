@@ -14,6 +14,7 @@ class AppTheme {
       secondary: AppColors.primaryBlackColor,
     ),
     appBarTheme: AppBarTheme(
+      surfaceTintColor: AppColors.primaryWhiteColor,
       centerTitle: true,
       titleTextStyle: AppTextStyles.styleS20W500Black,
       backgroundColor: AppColors.primaryWhiteColor,
@@ -53,7 +54,7 @@ class AppTheme {
     appBarTheme: AppBarTheme(
       titleTextStyle: AppTextStyles.styleS20W500White,
       centerTitle: true,
-
+      surfaceTintColor: AppColors.primaryBlackColor,
       backgroundColor: AppColors.primaryBlackColor,
       foregroundColor: AppColors.primaryWhiteColor,
     ),
