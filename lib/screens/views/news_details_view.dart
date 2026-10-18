@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/common/extensions/context_extensions.dart';
+import 'package:news_app/common/widgets/error_widget.dart';
 import 'package:news_app/screens/provider/main_screen_provider.dart';
 import 'package:news_app/screens/widgets/articles_body.dart';
 import 'package:provider/provider.dart';
@@ -27,6 +28,16 @@ class _NewsDetailsViewState extends State<NewsDetailsView> {
         if (provider.isSourcesLoading) {
           return Center(
             child: CircularProgressIndicator(color: context.theme.colorScheme.secondary),
+          );
+        }
+        if (provider.sourcesErrorMessage != null) {
+          return Center(
+            child: CustomErrorWidget(
+              errorMEssage: provider.sourcesErrorMessage!,
+              onRefresh: () {
+                Provider.of<MainScreenProvider>(context, listen: false).getSources();
+              },
+            ),
           );
         }
         if ((provider.sources ?? []).isNotEmpty) {
