@@ -17,7 +17,9 @@ class MainScreenProvider extends ChangeNotifier {
 
     notifyListeners();
     if (categoryEnum != null) {
-      List<Sources>? response = await NetworkService.getSources(categoryEnum!.name);
+      List<Sources>? response = await NetworkService.getSources(
+        categoryEnum!.name,
+      );
       print('-->${response?.length}');
       sources = response;
       notifyListeners();

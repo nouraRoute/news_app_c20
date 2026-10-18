@@ -20,8 +20,10 @@ class HomeView extends StatelessWidget {
         // ...CategoryEnum.values.map((e) => CategoryCardWidget(categoryEnum: e)),
         ...List.generate(
           CategoryEnum.values.length,
-          (index) =>
-              CategoryCardWidget(categoryEnum: CategoryEnum.values[index], isEven: index % 2 == 0),
+          (index) => CategoryCardWidget(
+            categoryEnum: CategoryEnum.values[index],
+            isEven: index % 2 == 0,
+          ),
         ),
       ],
     );

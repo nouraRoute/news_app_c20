@@ -1,4 +1,3 @@
-
 class SourceModel {
   String? status;
   List<Sources>? sources;
@@ -6,11 +5,13 @@ class SourceModel {
   SourceModel({this.status, this.sources});
 
   SourceModel.fromJson(Map<String, dynamic> json) {
-    if(json["status"] is String) {
+    if (json["status"] is String) {
       status = json["status"];
     }
-    if(json["sources"] is List) {
-      sources = json["sources"] == null ? null : (json["sources"] as List).map((e) => Sources.fromJson(e)).toList();
+    if (json["sources"] is List) {
+      sources = json["sources"] == null
+          ? null
+          : (json["sources"] as List).map((e) => Sources.fromJson(e)).toList();
     }
   }
 
@@ -21,7 +22,7 @@ class SourceModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> _data = <String, dynamic>{};
     _data["status"] = status;
-    if(sources != null) {
+    if (sources != null) {
       _data["sources"] = sources?.map((e) => e.toJson()).toList();
     }
     return _data;
@@ -37,28 +38,36 @@ class Sources {
   String? language;
   String? country;
 
-  Sources({this.id, this.name, this.description, this.url, this.category, this.language, this.country});
+  Sources({
+    this.id,
+    this.name,
+    this.description,
+    this.url,
+    this.category,
+    this.language,
+    this.country,
+  });
 
   Sources.fromJson(Map<String, dynamic> json) {
-    if(json["id"] is String) {
+    if (json["id"] is String) {
       id = json["id"];
     }
-    if(json["name"] is String) {
+    if (json["name"] is String) {
       name = json["name"];
     }
-    if(json["description"] is String) {
+    if (json["description"] is String) {
       description = json["description"];
     }
-    if(json["url"] is String) {
+    if (json["url"] is String) {
       url = json["url"];
     }
-    if(json["category"] is String) {
+    if (json["category"] is String) {
       category = json["category"];
     }
-    if(json["language"] is String) {
+    if (json["language"] is String) {
       language = json["language"];
     }
-    if(json["country"] is String) {
+    if (json["country"] is String) {
       country = json["country"];
     }
   }

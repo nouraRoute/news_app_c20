@@ -30,16 +30,25 @@ class DrawerWidget extends StatelessWidget {
 
           ListTile(
             title: Text("Go To Home", style: AppTextStyles.styleS20W700White),
-            leading: Icon(Icons.home_outlined, color: AppColors.primaryWhiteColor),
+            leading: Icon(
+              Icons.home_outlined,
+              color: AppColors.primaryWhiteColor,
+            ),
             onTap: () {
-              Provider.of<MainScreenProvider>(context, listen: false).changeCategory(null);
+              Provider.of<MainScreenProvider>(
+                context,
+                listen: false,
+              ).changeCategory(null);
               Navigator.of(context).pop();
             },
           ),
           Divider(endIndent: 16.w, indent: 16.w),
           ListTile(
             title: Text("Them", style: AppTextStyles.styleS20W700White),
-            leading: Icon(Icons.imagesearch_roller_outlined, color: AppColors.primaryWhiteColor),
+            leading: Icon(
+              Icons.imagesearch_roller_outlined,
+              color: AppColors.primaryWhiteColor,
+            ),
           ),
 
           CustomDropDownMenuWidget(

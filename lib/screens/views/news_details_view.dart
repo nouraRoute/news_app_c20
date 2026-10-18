@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/common/extensions/context_extensions.dart';
-import 'package:news_app/models/news_model.dart';
 import 'package:news_app/screens/provider/main_screen_provider.dart';
-import 'package:news_app/screens/widgets/news_card.dart';
+import 'package:news_app/screens/widgets/articles_body.dart';
 import 'package:provider/provider.dart';
 
 class NewsDetailsView extends StatefulWidget {
@@ -27,7 +25,9 @@ class _NewsDetailsViewState extends State<NewsDetailsView> {
     return Consumer<MainScreenProvider>(
       builder: (BuildContext context, MainScreenProvider provider, Widget? child) {
         if (provider.isSourcesLoading) {
-          return Center(child: CircularProgressIndicator());
+          return Center(
+            child: CircularProgressIndicator(color: context.theme.colorScheme.secondary),
+          );
         }
         if ((provider.sources ?? []).isNotEmpty) {
           return DefaultTabController(
@@ -49,7 +49,7 @@ class _NewsDetailsViewState extends State<NewsDetailsView> {
                   child: TabBarView(
                     children: List.generate(
                       provider.sources!.length,
-                      (index) => _buildTabBarView([]),
+                      (index) => ArticlesBody(sourceID: provider.sources![index].id ?? ''),
                     ),
                   ),
                 ),
@@ -60,15 +60,6 @@ class _NewsDetailsViewState extends State<NewsDetailsView> {
 
         return Center(child: Text("No data found!!!"));
       },
-    );
-  }
-
-  _buildTabBarView(List<NewsModel> newsList) {
-    return ListView.separated(
-      padding: EdgeInsets.all(16.r),
-      itemBuilder: (context, index) => NewsCard(newsModel: newsList[index]),
-      separatorBuilder: (context, index) => SizedBox(height: 24.h),
-      itemCount: newsList.length,
     );
   }
 }

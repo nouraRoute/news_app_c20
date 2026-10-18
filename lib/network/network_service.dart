@@ -2,27 +2,47 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:news_app/common/app_consts.dart';
+import 'package:news_app/models/article_respoce_model/article.dart';
+import 'package:news_app/models/article_respoce_model/article_respoce_model.dart';
 import 'package:news_app/models/source_model.dart';
 import 'package:news_app/network/endpoints.dart';
 
 class NetworkService {
+  static Dio dio = Dio(
+    BaseOptions(baseUrl: AppConsts.baseUrl, queryParameters: {"apiKey": AppConsts.apiKey}),
+  );
   static Future<List<Sources>?> getSources(String category) async {
-    Dio dio = Dio(
-      BaseOptions(baseUrl: AppConsts.baseUrl, queryParameters: {"apiKey": AppConsts.apiKey}),
-    );
-    print('--category:$category');
     Response response = await dio.get(
       Endpoints.sourcesEndpoint,
       queryParameters: {"category": category},
     );
+    log(
+      'Api:${AppConsts.baseUrl}${Endpoints.sourcesEndpoint}---\nqueryParameters:${{"category": category}}\nMethod:Get',
+    );
+
     if (response.statusCode == 200 &&
         response.data != null &&
         response.data['status'].toString().toLowerCase() == 'ok') {
-      print('---SUCCESS---');
+      log('---SUCCESS---');
       SourceModel sourceModel = SourceModel.fromJson(response.data);
       return sourceModel.sources;
     }
   } //getChannels
 
-  getArticles(String sourceId) {} //getNews
+  static Future<List<Article>?> getArticles(String sourceId) async {
+    Response response = await dio.get(
+      Endpoints.articlesEndpoint,
+      queryParameters: {"sources": sourceId},
+    );
+    log(
+      'Api:${AppConsts.baseUrl}${Endpoints.articlesEndpoint}---\nqueryParameters:${{"sources": sourceId}}\nMethod:Get',
+    );
+    if (response.statusCode == 200 &&
+        response.data != null &&
+        response.data['status'].toString().toLowerCase() == 'ok') {
+      log('---SUCCESS---');
+      ArticleResponceModel articleResponceModel = ArticleResponceModel.fromJson(response.data);
+      return articleResponceModel.articles;
+    }
+  } //getNews
 }

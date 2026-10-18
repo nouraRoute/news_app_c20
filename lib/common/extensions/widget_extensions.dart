@@ -15,7 +15,12 @@ extension WidgetExtensions on Widget {
     double bottom = 0.0,
   }) {
     return Padding(
-      padding: EdgeInsets.only(bottom: bottom, left: left, right: right, top: top),
+      padding: EdgeInsets.only(
+        bottom: bottom,
+        left: left,
+        right: right,
+        top: top,
+      ),
       child: this,
     );
   }

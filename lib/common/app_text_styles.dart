@@ -90,27 +90,87 @@ class AppTextStyles {
   static TextStyle get styleS22W700Black =>
       _styleS22W700.copyWith(color: AppColors.primaryBlackColor);
 
-  static final TextStyle _styleS14W400 = TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400);
-  static final TextStyle _styleS16W400 = TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400);
-  static final TextStyle _styleS18W400 = TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w400);
-  static final TextStyle _styleS20W400 = TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w400);
-  static final TextStyle _styleS22W400 = TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w400);
+  static final TextStyle _styleS14W400 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  );
+  static final TextStyle _styleS16W400 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+  );
+  static final TextStyle _styleS18W400 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w400,
+  );
+  static final TextStyle _styleS20W400 = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w400,
+  );
+  static final TextStyle _styleS22W400 = TextStyle(
+    fontSize: 22.sp,
+    fontWeight: FontWeight.w400,
+  );
 
-  static final TextStyle _styleS14W600 = TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600);
-  static final TextStyle _styleS16W600 = TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600);
-  static final TextStyle _styleS18W600 = TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600);
-  static final TextStyle _styleS20W600 = TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600);
-  static final TextStyle _styleS22W600 = TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w600);
+  static final TextStyle _styleS14W600 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+  );
+  static final TextStyle _styleS16W600 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+  );
+  static final TextStyle _styleS18W600 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w600,
+  );
+  static final TextStyle _styleS20W600 = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w600,
+  );
+  static final TextStyle _styleS22W600 = TextStyle(
+    fontSize: 22.sp,
+    fontWeight: FontWeight.w600,
+  );
 
-  static final TextStyle _styleS14W500 = TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500);
-  static final TextStyle _styleS16W500 = TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500);
-  static final TextStyle _styleS18W500 = TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500);
-  static final TextStyle _styleS20W500 = TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500);
-  static final TextStyle _styleS22W500 = TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w500);
+  static final TextStyle _styleS14W500 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+  );
+  static final TextStyle _styleS16W500 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+  );
+  static final TextStyle _styleS18W500 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
+  );
+  static final TextStyle _styleS20W500 = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w500,
+  );
+  static final TextStyle _styleS22W500 = TextStyle(
+    fontSize: 22.sp,
+    fontWeight: FontWeight.w500,
+  );
 
-  static final TextStyle _styleS14W700 = TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w700);
-  static final TextStyle _styleS16W700 = TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700);
-  static final TextStyle _styleS18W700 = TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w700);
-  static final TextStyle _styleS20W700 = TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700);
-  static final TextStyle _styleS22W700 = TextStyle(fontSize: 22.sp, fontWeight: FontWeight.w700);
+  static final TextStyle _styleS14W700 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w700,
+  );
+  static final TextStyle _styleS16W700 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w700,
+  );
+  static final TextStyle _styleS18W700 = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w700,
+  );
+  static final TextStyle _styleS20W700 = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w700,
+  );
+  static final TextStyle _styleS22W700 = TextStyle(
+    fontSize: 22.sp,
+    fontWeight: FontWeight.w700,
+  );
 }

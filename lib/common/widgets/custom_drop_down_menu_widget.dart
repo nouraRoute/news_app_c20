@@ -18,7 +18,10 @@ class CustomDropDownMenuWidget extends StatelessWidget {
       padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 20.h),
       child: DropdownMenu(
         width: 237,
-        trailingIcon: Icon(Icons.arrow_drop_down_rounded, color: forGroundColor),
+        trailingIcon: Icon(
+          Icons.arrow_drop_down_rounded,
+          color: forGroundColor,
+        ),
         textStyle: AppTextStyles.styleS20W500White,
 
         dropdownMenuEntries: items
@@ -26,12 +29,17 @@ class CustomDropDownMenuWidget extends StatelessWidget {
               (e) => DropdownMenuEntry(
                 value: e.value,
                 label: e.label,
-                style: ButtonStyle(foregroundColor: WidgetStateProperty.all(forGroundColor)),
+                style: ButtonStyle(
+                  foregroundColor: WidgetStateProperty.all(forGroundColor),
+                ),
               ),
             )
             .toList(),
         inputDecorationTheme: InputDecorationTheme(
-          contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: 16.w,
+            vertical: 16.h,
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.r),
             borderSide: BorderSide(color: forGroundColor),
