@@ -1,48 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/common/extensions/context_extensions.dart';
 import 'package:news_app/common/widgets/error_widget.dart';
-import 'package:news_app/news/view_model/provider/main_screen_provider.dart';
+import 'package:news_app/news/model/data_models/source_model.dart';
+import 'package:news_app/news/view_model/main_layer_cubit/main_layer_cubit.dart';
+import 'package:news_app/news/view_model/main_layer_cubit/main_layer_state.dart';
 import 'package:news_app/news/view/widgets/articles_body.dart';
-import 'package:provider/provider.dart';
 
-class NewsDetailsView extends StatefulWidget {
+class NewsDetailsView extends StatelessWidget {
   const NewsDetailsView({super.key});
   @override
-  State<NewsDetailsView> createState() => _NewsDetailsViewState();
-}
-
-class _NewsDetailsViewState extends State<NewsDetailsView> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<MainScreenProvider>(context, listen: false).getSources();
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Consumer<MainScreenProvider>(
-      builder: (BuildContext context, MainScreenProvider provider, Widget? child) {
-        if (provider.isSourcesLoading) {
+    return BlocBuilder<MainLayerCubit, MainLayerState>(
+      builder: (BuildContext context, state) {
+        if (state is GetSourcesLoading) {
           return Center(
             child: CircularProgressIndicator(color: context.theme.colorScheme.secondary),
           );
-        }
-        if (provider.sourcesErrorMessage != null) {
+        } else if (state is GetSourcesError) {
           return Center(
             child: CustomErrorWidget(
-              errorMEssage: provider.sourcesErrorMessage!,
+              errorMEssage: state.errorMessage,
               onRefresh: () {
-                Provider.of<MainScreenProvider>(context, listen: false).getSources();
+                BlocProvider.of<MainLayerCubit>(
+                  context,
+                  listen: false,
+                ).getSources(state.categoryEnum!);
               },
             ),
           );
-        }
-        if ((provider.sources ?? []).isNotEmpty) {
+        } else if (state is ViewSourcesState) {
+          List<Sources> sources = state.sources;
           return DefaultTabController(
-            length: provider.sources!.length,
+            length: sources.length,
             child: Column(
               children: [
                 TabBar(
@@ -54,13 +44,13 @@ class _NewsDetailsViewState extends State<NewsDetailsView> {
                   tabAlignment: TabAlignment.start,
 
                   // tabAlignment: TabAlignment.start,
-                  tabs: provider.sources!.map((e) => Tab(text: e.name ?? '')).toList(),
+                  tabs: sources.map((e) => Tab(text: e.name ?? '')).toList(),
                 ),
                 Expanded(
                   child: TabBarView(
                     children: List.generate(
-                      provider.sources!.length,
-                      (index) => ArticlesBody(sourceID: provider.sources![index].id ?? ''),
+                      sources.length,
+                      (index) => ArticlesBody(sourceID: sources[index].id ?? ''),
                     ),
                   ),
                 ),

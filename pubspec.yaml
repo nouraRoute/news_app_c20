@@ -41,6 +41,7 @@ dependencies:
   dio: ^5.11.1
   timeago: ^3.7.1
   intl: ^0.20.3
+  flutter_bloc: ^9.1.1
   # cached_network_image: ^3.4.1
 
 dev_dependencies:

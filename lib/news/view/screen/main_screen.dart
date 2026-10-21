@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/news/view_model/provider/main_screen_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/news/view_model/main_layer_cubit/main_layer_cubit.dart';
+import 'package:news_app/news/view_model/main_layer_cubit/main_layer_state.dart';
 import 'package:news_app/news/view/sub_views/home_view.dart';
 import 'package:news_app/news/view/sub_views/news_details_view.dart';
 import 'package:news_app/news/view/widgets/drawer_widget.dart';
-import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (BuildContext context) => MainScreenProvider(),
-      child: Consumer<MainScreenProvider>(
-        builder: (context, provider, _) {
+    return BlocProvider(
+      create: (context) => MainLayerCubit(),
+      child: BlocBuilder<MainLayerCubit, MainLayerState>(
+        builder: (context, state) {
           return Scaffold(
             drawer: DrawerWidget(),
             appBar: AppBar(
@@ -22,7 +23,7 @@ class MainScreen extends StatelessWidget {
               ),
               actions: [Icon(Icons.search)],
             ),
-            body: provider.categoryEnum == null ? HomeView() : NewsDetailsView(), //HomeView()
+            body: state.categoryEnum == null ? HomeView() : NewsDetailsView(), //HomeView()
           );
         },
       ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/common/app_text_styles.dart';
 import 'package:news_app/common/extensions/context_extensions.dart';
 import 'package:news_app/common/extensions/widget_extensions.dart';
 import 'package:news_app/common/enums/category_enum.dart';
-import 'package:news_app/news/view_model/provider/main_screen_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:news_app/news/view_model/main_layer_cubit/main_layer_cubit.dart';
 
 class CategoryCardWidget extends StatelessWidget {
   const CategoryCardWidget({super.key, required this.categoryEnum, required this.isEven});
@@ -30,10 +30,10 @@ class CategoryCardWidget extends StatelessWidget {
         children: [
           Text(categoryEnum.name, style: AppTextStyles.styleS20W400Black.copyWith(fontSize: 30.sp)),
           InkWell(
-            onTap: () => Provider.of<MainScreenProvider>(
+            onTap: () => BlocProvider.of<MainLayerCubit>(
               context,
               listen: false,
-            ).changeCategory(categoryEnum),
+            ).selectCategory(categoryEnum),
             child: Container(
               width: 170.w,
               height: 55.h,
