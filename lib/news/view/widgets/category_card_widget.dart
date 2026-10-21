@@ -3,16 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/common/app_text_styles.dart';
 import 'package:news_app/common/extensions/context_extensions.dart';
 import 'package:news_app/common/extensions/widget_extensions.dart';
-import 'package:news_app/enums/category_enum.dart';
-import 'package:news_app/screens/provider/main_screen_provider.dart';
+import 'package:news_app/common/enums/category_enum.dart';
+import 'package:news_app/news/view_model/provider/main_screen_provider.dart';
 import 'package:provider/provider.dart';
 
 class CategoryCardWidget extends StatelessWidget {
-  const CategoryCardWidget({
-    super.key,
-    required this.categoryEnum,
-    required this.isEven,
-  });
+  const CategoryCardWidget({super.key, required this.categoryEnum, required this.isEven});
   final CategoryEnum categoryEnum;
   final bool isEven;
   @override
@@ -23,10 +19,7 @@ class CategoryCardWidget extends StatelessWidget {
       width: 1.sw,
       height: 200.h,
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(categoryEnum.getImage),
-          fit: BoxFit.fill,
-        ),
+        image: DecorationImage(image: AssetImage(categoryEnum.getImage), fit: BoxFit.fill),
         borderRadius: BorderRadius.circular(24.r),
         color: context.theme.colorScheme.secondary,
       ),
@@ -35,10 +28,7 @@ class CategoryCardWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
         children: [
-          Text(
-            categoryEnum.name,
-            style: AppTextStyles.styleS20W400Black.copyWith(fontSize: 30.sp),
-          ),
+          Text(categoryEnum.name, style: AppTextStyles.styleS20W400Black.copyWith(fontSize: 30.sp)),
           InkWell(
             onTap: () => Provider.of<MainScreenProvider>(
               context,
@@ -59,17 +49,12 @@ class CategoryCardWidget extends StatelessWidget {
                     CircleAvatar(
                       backgroundColor: context.theme.scaffoldBackgroundColor,
                       radius: 27.r,
-                      child: Icon(
-                        Icons.arrow_back_ios,
-                        color: context.theme.colorScheme.secondary,
-                      ),
+                      child: Icon(Icons.arrow_back_ios, color: context.theme.colorScheme.secondary),
                     ),
 
                   Text(
                     "View All",
-                    style: context.textTheme.titleLarge!.copyWith(
-                      fontSize: 24.sp,
-                    ),
+                    style: context.textTheme.titleLarge!.copyWith(fontSize: 24.sp),
                   ).symmetricPadding(vertical: 9.h, horizontal: 12.w),
 
                   if (isEven)

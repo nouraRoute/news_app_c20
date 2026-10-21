@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/common/extensions/context_extensions.dart';
 import 'package:news_app/common/widgets/error_widget.dart';
-import 'package:news_app/screens/provider/main_screen_provider.dart';
-import 'package:news_app/screens/widgets/articles_body.dart';
+import 'package:news_app/news/view_model/provider/main_screen_provider.dart';
+import 'package:news_app/news/view/widgets/articles_body.dart';
 import 'package:provider/provider.dart';
 
 class NewsDetailsView extends StatefulWidget {
