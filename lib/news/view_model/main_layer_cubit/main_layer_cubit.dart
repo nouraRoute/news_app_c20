@@ -4,10 +4,14 @@ import 'package:news_app/common/error/error_model.dart';
 import 'package:news_app/news/model/data_models/article_respoce_model/article.dart';
 import 'package:news_app/news/model/data_models/source_model.dart';
 import 'package:news_app/news/model/network/network_service.dart';
+import 'package:news_app/news/repository/main_layer_repository.dart';
 import 'package:news_app/news/view_model/main_layer_cubit/main_layer_state.dart';
 
 class MainLayerCubit extends Cubit<MainLayerState> {
-  MainLayerCubit() : super(MainLAyerInitialState());
+  final MainLayerRepository _mainLayerRepository;
+  MainLayerCubit({required MainLayerRepository mainLayerRepository})
+    : _mainLayerRepository = mainLayerRepository,
+      super(MainLAyerInitialState());
   List<Sources>? sources;
   CategoryEnum? selectedCategory;
   Future<void> selectCategory(CategoryEnum? newCategory) async {
@@ -20,7 +24,7 @@ class MainLayerCubit extends Cubit<MainLayerState> {
   Future<void> getSources(CategoryEnum category) async {
     selectedCategory = category;
     emit(GetSourcesLoading(categoryEnum: category));
-    (ErrorModel?, List<Sources>?) result = await NetworkService.getSources(category.name);
+    (ErrorModel?, List<Sources>?) result = await _mainLayerRepository.getSources(category.name);
     if (result.$1 != null) {
       emit(GetSourcesError(categoryEnum: category, errorMessage: result.$1!.message));
     } else {
@@ -32,7 +36,7 @@ class MainLayerCubit extends Cubit<MainLayerState> {
   Future<void> getArticles(String sourceId) async {
     if (sources == null) return;
     emit(GetArticlesLoading(sources: sources!, categoryEnum: selectedCategory));
-    (ErrorModel?, List<Article>?) result = await NetworkService.getArticles(sourceId);
+    (ErrorModel?, List<Article>?) result = await _mainLayerRepository.getArticles(sourceId);
     if (result.$1 != null) {
       emit(
         GetArticlesError(

@@ -7,12 +7,14 @@ import 'package:news_app/news/model/data_models/article_respoce_model/article.da
 import 'package:news_app/news/model/data_models/article_respoce_model/article_respoce_model.dart';
 import 'package:news_app/news/model/data_models/source_model.dart';
 import 'package:news_app/common/network/endpoints.dart';
+import 'package:news_app/news/model/data_source/main_layer_data_source.dart';
 
-class NetworkService {
-  static Dio dio = Dio(
+class NetworkdataSource extends MainLayerDataSource {
+  Dio dio = Dio(
     BaseOptions(baseUrl: AppConsts.baseUrl, queryParameters: {"apiKey": AppConsts.apiKey}),
   );
-  static Future<(ErrorModel?, List<Sources>?)> getSources(String category) async {
+  @override
+  Future<(ErrorModel?, List<Sources>?)> getSources(String category) async {
     try {
       Response response = await dio.get(
         Endpoints.sourcesEndpoint,
@@ -37,7 +39,8 @@ class NetworkService {
     }
   } //getChannels
 
-  static Future<(ErrorModel?, List<Article>?)> getArticles(String sourceId) async {
+  @override
+  Future<(ErrorModel?, List<Article>?)> getArticles(String sourceId) async {
     try {
       Response response = await dio.get(
         Endpoints.articlesEndpoint,

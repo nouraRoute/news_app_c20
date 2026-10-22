@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_app/news/model/cash_data_source/cash_data_source.dart';
+import 'package:news_app/news/model/network/network_service.dart';
+import 'package:news_app/news/repository/main_layer_repository.dart';
 import 'package:news_app/news/view_model/main_layer_cubit/main_layer_cubit.dart';
 import 'package:news_app/news/view_model/main_layer_cubit/main_layer_state.dart';
 import 'package:news_app/news/view/sub_views/home_view.dart';
@@ -12,7 +15,8 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => MainLayerCubit(),
+      create: (context) =>
+          MainLayerCubit(mainLayerRepository: MainLayerRepository(dataSource: NetworkdataSource())),
       child: BlocBuilder<MainLayerCubit, MainLayerState>(
         builder: (context, state) {
           return Scaffold(

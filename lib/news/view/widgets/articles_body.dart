@@ -41,7 +41,7 @@ class _ArticlesBodyState extends State<ArticlesBody> {
         },
       );
     } else if (state is GetArticlesSuccess) {
-      List<Article> articles = state.articles ?? [];
+      List<Article> articles = state.articles;
       return ListView.separated(
         padding: EdgeInsets.all(16.r),
         itemBuilder: (context, index) => NewsCard(article: articles[index]),
